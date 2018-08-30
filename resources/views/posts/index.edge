@@ -1,0 +1,31 @@
+@layout('layout.app')
+
+@section('content')
+  @set('title', 'Blog Demo')
+  <div class="post-body-wrap">
+      <article class="float-left w-full create-post-wrap bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <span class="user-img-for-post">
+               <img src="../images/profile.png">
+        </span>
+        <form>
+          <textarea placeholder="write here..."></textarea>
+          <div class="btn-group-wrap">
+            <button class="rounded-btn float-right bg-info hover:bg-white hover:text-info text-white rounded-full shadow">
+              <i class="fa fa-paper-plane"></i>
+            </button>
+          </div>
+        </form>
+      </article>
+  </div>
+  {{--
+    Looping over all posts.
+
+    ref: http://edge.adonisjs.com/docs/iteration
+    --}}
+  @each(post in posts, include = 'posts.partials.post-card')
+  @else
+    @component('components.alert', { color: 'info' })
+      <p class="text-sm">There's no post available!</p>
+    @endcomponent
+  @endeach
+@endsection

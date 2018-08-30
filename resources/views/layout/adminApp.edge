@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        {{-- Title --}}
+        <title>{{ title }} | Admin</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/gijgo@1.8.2/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+       
+        {{ style('/select.css') }}
+        {{ style('/style.css') }}
+        <script type="text/javascript">
+            var base_url = 'http://112.196.33.91:3333/';
+        </script>
+
+    </head>
+<body class="bg-grey-lighter">
+    <div class="col-12">
+        <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-success">
+        <a class="navbar-brand" href="#"><img src="/images/logo.png" class="img-fluid"></a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav ml-auto">
+
+
+                
+
+
+
+              {{--
+                This tag let us know if the current user is logged in or not.
+
+                ref: http://adonisjs.com/docs/4.1/views#_loggedin
+                ref: http://adonisjs.com/docs/4.1/authentication#_loggedin
+              --}}
+            
+                @loggedIn
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://112.196.33.91:3333/logout"><i class="fa fa-sign-out"></i>Logout</a>
+                    </li>
+                @else
+                  
+                @endloggedIn
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="cstm-padding-top">
+        <div class="row">
+            {{--
+                Include a partial into the view
+                ref: http://edge.adonisjs.com/docs/partials
+            --}}
+        
+            @include('layout.adminPartials.navigation')
+            
+            <div class="col-12 col-sm-8 col-md-9 col-lg-10 col-xl-10">
+                {{--
+                    Display the section content
+                    ref: http://edge.adonisjs.com/docs/layouts#_basic_example
+                --}}
+                @!section('content')
+            </div>
+        </div>
+    </div>
+
+</div>
+  
+  {{-- Scripts --}}
+  {{ script('/app.js') }}
+
+@include('layout.adminPartials.footer')

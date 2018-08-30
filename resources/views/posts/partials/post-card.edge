@@ -1,0 +1,137 @@
+  <div class="post-body-wrap">
+    <article class="float-left w-full rounded px-8 pt-6 pb-8 mb-4">
+      <header class="flex justify-between mb-4 pb-4 border-b">
+        <h4 class="post-title">
+          <span class="user-img-for-post">
+             <img src="../images/profile.png">
+          </span>
+          {{ post.title }}</h4>
+
+        {{--
+          This tag let us know if the current user is logged in or not.
+
+          ref: http://adonisjs.com/docs/4.0/views#_loggedin
+          ref: http://adonisjs.com/docs/4.0/authentication#_loggedin
+          --}}
+        @loggedIn
+          <div class="flex">
+            <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-info-light mr-4" href="/posts/{{ post.id }}/edit">
+              @!component('icon.edit', { size: '25px' })
+            </a>
+            <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="/posts/{{ post.id }}/delete">
+              @!component('icon.trash', { size: '25px' })
+            </a>
+          </div>
+        @endloggedIn
+      </header>
+    <img class="post-banner" src="../images/c.jpg">
+            <div class="comment-on-post">
+              <h5 class="text-lg uppercase mb-5">Day 1 posts</h5>
+              
+              <p>
+              {{{ post.body }}}</p>
+              <div class="float-left w-full border border-r-0 border-l-0 my-3 post-like-detail-wrap">
+                <div class="float-left w-3\/5 sm-w-auto py-2 post-like-detail">
+                  <span class="bg-info text-white"><i class="fa fa-thumbs-up"></i></span>
+                  <label>Hennry Fernado and 23 others liked your post</label>
+                </div>
+                <div class="float-right text-right w-2\/5 sm-w-auto py-2">4 comments</div>
+              </div>
+              <div class="float-left w-full my-3 comment-list">
+                <ul>
+                    <li>
+                        <span>
+                              <img src="../images/user-dummy.jpg">
+                        </span>
+                        <div class="comment-wrap">
+                          <p>Lorem Ipsum is simply dummy text</p>
+                          <ol>
+                              <li>
+                                <a href="#" class="text-warning">
+                                  <i class="fa fa-flag"></i>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#" class="text-danger">
+                                  <i class="fa fa-trash"></i>
+                                </a>
+                              </li>
+                          </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <span>
+                              <img src="../images/user-dummy-female.png">
+                        </span>
+                        <div class="comment-wrap">
+                          <p>Lorem Ipsum is simply dummy text</p>
+                          <ol>
+                              <li>
+                                <a href="#" class="text-warning">
+                                  <i class="fa fa-flag"></i>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#" class="text-danger">
+                                  <i class="fa fa-trash"></i>
+                                </a>
+                              </li>
+                          </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <span>
+                              <img src="../images/user-dummy.jpg">
+                        </span>
+                        <div class="comment-wrap">
+                          <p>Lorem Ipsum is simply dummy text</p>
+                          <ol>
+                              <li>
+                                <a href="#" class="text-warning">
+                                  <i class="fa fa-flag"></i>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#" class="text-danger">
+                                  <i class="fa fa-trash"></i>
+                                </a>
+                              </li>
+                          </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <span>
+                              <img src="../images/user-dummy-female.png">
+                        </span>
+                        <div class="comment-wrap">
+                          <p>Lorem Ipsum is simply dummy text</p>
+                          <ol>
+                              <li>
+                                <a href="#" class="text-warning">
+                                  <i class="fa fa-flag"></i>
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#" class="text-danger">
+                                  <i class="fa fa-trash"></i>
+                                </a>
+                              </li>
+                          </ol>
+                        </div>
+                    </li>
+                </ul>
+              </div>
+              <div class="float-left w-full my-3 post-comment-like-on-posy-wrap">
+              <form>
+                <div class="float-left w-3\/4 sm-w-auto py-2">
+                  <input type="text" class="w-full rounded-full p-3 shadow">
+                </div>
+                <div class="float-right text-right w-1\/4 sm-w-auto py-2">
+                  <button class="bg-info hover:bg-white hover:text-info text-white"><i class="fa fa-thumbs-up"></i></button>
+                  <button class="bg-white hover:bg-info hover:text-white text-info"><i class="fa fa-paper-plane"></i></button>
+                </div>
+                </form>
+              </div>
+            </div>
+   </article>
+</div>

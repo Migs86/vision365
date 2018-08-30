@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {{-- Title --}}
+        <title>{{ title }} | Adonis</title>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/gijgo@1.8.2/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+        {{ style('/select.css') }}
+        {{ style('/style.css') }}
+        <script type="text/javascript">
+            var base_url = 'http://112.196.33.91:3333/';
+        </script>
+
+    </head>
+<body class="bg-grey-lighter">
+  <div class="row">
+  {{--
+    Include a partial into the view
+    ref: http://edge.adonisjs.com/docs/partials
+    --}}
+  @include('layout.adminPartials.navigation')
+  <div class="col-12 col-sm-8 col-md-9 col-lg-10 col-xl-10">
+    {{--
+      Display the section content
+      ref: http://edge.adonisjs.com/docs/layouts#_basic_example
+      --}}
+    @!section('content')
+  </div>
+</div>
+  {{-- Scripts --}}
+  {{ script('/app.js') }}
+@include('layout.adminPartials.footer')

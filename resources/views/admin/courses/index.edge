@@ -1,0 +1,46 @@
+@layout('layout.adminApp')
+@section('content')
+    @set('title', 'AdminLogin')
+    <div class="flex flex-col items-center">
+        <section class="data_section w-full">
+            @if(flashMessage('notification'))
+                <span> {{ flashMessage('notification') }} </span>
+            @endif
+            @!component('components.input', { name: 'SearchDataTable',placeholder:'Search..', required: true })
+            
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="data_table">
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @each(course in courses)
+                            <tr>
+							    <td>{{ ($loop.index + 1) }}</td>
+							    <td>{{{ course.name }}}</td>
+							    <td>{{{ course.description.substring(0, 30) }}} ... </td>
+                                <td>
+                                    <div class="flex">
+                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-info-light mr-4" href="#">
+                                          @!component('icon.edit', { size: '25px' })
+                                        </a>
+                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="#">
+                                          @!component('icon.trash', { size: '25px' })
+                                        </a>
+                                    </div>
+                                </td>
+							</tr>
+							@else
+							 <h2> No Course found </h2>
+							@endeach
+                        </tbody>
+                    </table>
+                </div>
+        </section>
+    </div>
+@endsection

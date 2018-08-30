@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {{-- Title --}}
+        <title>{{ title }} | Admin</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/gijgo@1.8.2/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+       
+        {{ style('/select.css') }}
+        {{ style('/style.css') }}
+        <script type="text/javascript">
+            var base_url = 'http://112.196.33.91:3333/';
+        </script>
+
+    </head>
+<body class="bg-grey-lighter">
+  <div class="col-12">
+    <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-success">
+  <a class="navbar-brand" href="#"><img src="/images/logo.png" class="img-fluid"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      {{--
+        This tag let us know if the current user is logged in or not.
+
+        ref: http://adonisjs.com/docs/4.1/views#_loggedin
+        ref: http://adonisjs.com/docs/4.1/authentication#_loggedin
+      --}}
+      @loggedIn
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><i class="fa fa-clipboard"></i>Create a post</a></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-sign-out"></i>Logout</a>
+      </li>
+        @else
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-sign-in"></i>Sign In</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#"><i class="fa fa-user-plus"></i>Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <!--div class="row">
+
+      <nav class="w-100 z-50 flex items-center shadow justify-between flex-wrap bg-success p-3 nav-wrap">
+  {{-- Logo --}}
+  <div class="flex items-center flex-no-shrink mr-6">
+    <a href="javascript:void(0);">
+      <img src="/images/logo.png" class="img-fluid">
+    </a>
+  </div>
+
+  {{-- Hamburger --}}
+  <--<div class="block lg:hidden">
+    <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-black hover:border-teal-dark">
+      <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+    </button>
+  </div>->
+
+  
+  {{-- Navigation --}}
+  <div class="block lg:flex lg:items-center lg:w-auto">
+    <div class="text-sm lg:flex-grow top-list">
+      {{--
+        This tag let us know if the current user is logged in or not.
+
+        ref: http://adonisjs.com/docs/4.1/views#_loggedin
+        ref: http://adonisjs.com/docs/4.1/authentication#_loggedin
+      --}}
+      @loggedIn
+        <a class="block mt-0 lg:inline-block lg:mt-0 hover:text-white-light text-white mr-4" href="/posts/create"><i class="fa fa-clipboard"></i>Create a post</a>
+        <a class="block mt-0 lg:inline-block lg:mt-0 hover:text-white-light text-white mr-4" href="/logout"><i class="fa fa-sign-out"></i>Logout</a>
+      @else
+        <a class="block mt-0 lg:inline-block lg:mt-0 hover:text-white-light text-white mr-4" href="/login"><i class="fa fa-sign-in"></i>Sign In</a>
+        <a class="block mt-0 lg:inline-block lg:mt-0 hover:text-white-light text-white mr-4" href="/register"><i class="fa fa-user-plus"></i>Sign Up</a>
+      @endloggedIn
+    </div>
+  </div>
+</nav>-->
+
+      <!-- <div class="table-responsive">
+                                Welcome, 
+                {{{ auth.user.username }}}
+
+                    <a href="/logout">Logout here</a>
+                        </div> -->
+                        <div class="mt-16 pt-3">
+                          <div class="row">
+    {{--
+      Include a partial into the view
+      ref: http://edge.adonisjs.com/docs/partials
+      --}}
+              @include('layout.adminPartials.navigation')
+        <div class="col-12 col-sm-8 col-md-9 col-lg-10 col-xl-10">
+          {{--
+            Display the section content
+            ref: http://edge.adonisjs.com/docs/layouts#_basic_example
+            --}}
+          @!section('content')
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  {{-- Scripts --}}
+  {{ script('/app.js') }}
+@include('layout.adminPartials.footer')

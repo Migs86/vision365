@@ -1,0 +1,45 @@
+@layout('layout.adminApp')
+@section('content')
+  @set('title', 'AdminLogin')
+  <div class="flex flex-col items-center">
+      <section class="data_section">
+@if(flashMessage('notification'))
+  <span> {{ flashMessage('notification') }} </span>
+@endif
+      @!component('components.input', { name: 'SearchDataTable',placeholder:'Search..', required: true })
+                        <div class="table-responsive">
+                                <table class="table table-bordered" id="data_table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">S.No.</th>
+                                      <th scope="col">User Name</th>
+                                      <th scope="col">Email</th>
+                                      <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @each(user in users)
+                                    <tr>
+								    <td>{{ ($loop.index + 1) }}</td>
+								    <td>{{{ user.username }}}</td>
+								    <td>{{{ user.email }}}</td>
+								    <td><div class="flex">
+                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-info-light mr-4" href="admin/user/{{ user.id }}/edit">
+                                          @!component('icon.edit', { size: '25px' })
+                                        </a>
+                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="admin/userDelete/{{ user.id }}">
+                                          @!component('icon.trash', { size: '25px' })
+                                        </a>
+                                      </div></td>
+								    </tr>
+								  @else
+								    <h2> No users found </h2>
+								  @endeach
+
+                                  </tbody>
+                                </table>
+                        </div>
+                    </section>
+
+@endsection
+	

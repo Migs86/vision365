@@ -1,0 +1,50 @@
+@layout('layout.adminApp')
+@section('content')
+
+    @set('title', 'AdminLogin')
+    <div class="flex flex-col items-center">
+        <section class="data_section">
+            @if(flashMessage('notification'))
+                <span> {{ flashMessage('notification') }} </span>
+            @endif
+            
+            @!component('components.input', { name: 'SearchDataTable',placeholder:'Search..', required: true })
+            
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="data_table">
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No.</th>
+                                <th scope="col">Section</th>
+                                <th scope="col">Topic Name</th>
+                                <th scope="col">Body</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @each(topic in topics)
+                            <tr>
+							    <td>{{ ($loop.index + 1) }}</td>
+							    <td>{{{ topic.section_name }}}</td>
+                                <td>{{{ topic.name }}}</td>
+							    <td>{{{ topic.description.substring(0, 30) }}} ... </td>
+							    <td>
+                                    <div class="flex">
+                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-info-light mr-4" href="#">
+                                          @!component('icon.edit', { size: '25px' })
+                                        </a>
+                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="#">
+                                          @!component('icon.trash', { size: '25px' })
+                                        </a>
+                                    </div>
+                                </td>
+							</tr>
+							@else
+							 <h2> No post found </h2>
+							@endeach
+                        </tbody>
+                    </table>
+                </div>
+        </section>
+    </div>
+@endsection
