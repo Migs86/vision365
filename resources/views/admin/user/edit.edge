@@ -1,0 +1,80 @@
+@layout('layout.adminApp')
+@section('content')
+@set('title', 'AddTopics')
+<section class="data_section">
+            <div class="col">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form_section">
+                            <fieldset>
+                                <legend>User Details</legend>
+                                <div class="row justify-content-md-center">
+                                    <div class="col-12 col-sm-12">
+                                        <form class="row" method="post" action="/admin/userUpdate/{{{user.id}}}" enctype="multipart/form-data">
+                                        {{ csrfField() }}
+                                            <div class="col-12 col-sm-6">
+                                            {{ elIf('<small class="text-xs">$self</small>', getErrorFor('name'), hasErrorFor('name')) }}
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label">Name</label>
+                                                    <div class="col-lg ">
+                                                        <div class="input-group">
+                                                            <input required="" type="text" class="form-control" id="formGroupExampleInput" value="{{{user.name}}}" name="name" placeholder="Name">
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                            
+                                            <div class="col-12 col-sm-6">
+                                            {{ elIf('<small class="text-xs">$self</small>', getErrorFor('username'), hasErrorFor('username')) }}
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label">Username</label>
+                                                    <div class="col-lg ">
+                                                        <div class="input-group">
+                                                            <input required="" type="text" class="form-control" id="formGroupExampleInput" value="{{{user.username}}}" name="username" placeholder="username" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                            {{ elIf('<small class="text-xs">$self</small>', getErrorFor('email'), hasErrorFor('email')) }}
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label">Email</label>
+                                                    <div class="col-lg ">
+                                                        <div class="input-group">
+                                                            <input required="" type="text" class="form-control" id="formGroupExampleInput" value="{{{user.email}}}" name="email" placeholder="email" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                            
+                                            <div class="col-12 col-sm-6">
+                                                <div class="custom-choose-file-wrap">
+                                                  <input type="file" onchange="previewFile()" name="profile_image" required="" value="{{{user.profile_image}}}"/>
+                                                  <span class="w-full inline-block text-center bg-info text-white p-2 rounded">Choose Profile Image</span>
+                                                </div>
+                                            </div> 
+                                            <div class="upload-profile-image-dislay-wrap">
+                                                  <img id="preview" style="display:none" src="" alt="Image preview...">
+                                                  {{ elIf('<small class="text-xs text-danger">$self</small>', getErrorFor('profile_image'), hasErrorFor('profile_image')) }}
+                                            </div>   
+                                           
+                                                <div class="col-12 col-sm-6 text-right">
+                                                <div class="display_table">
+                                                    <div class="display_table_cell align-bottom">
+                                                        <div class="form-group">
+                                                            <input type="submit" class="btn-green-round btn mr-2" name="submit" value="Create">
+                                                            <a href="" class="btn-cancel btn">Cancel</a>
+                                                        </div>						
+                                                    </div>
+                                                </div>
+                                            </div>					
+                                        </form>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+@endsection

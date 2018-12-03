@@ -1,26 +1,97 @@
 @layout('layout.app')
-
 @section('content')
-  @set('title', 'Edit the post ' + post.id)
 
-  <div class="flex flex-col items-center">
-    <form class="bg-white w-3/5 shadow-md rounded px-8 pt-6 pb-8 mb-4" action="/posts/{{ post.id }}?_method=PUT" method="POST">
+	@set('title', 'Edit the post ' + post.id)
 
-      {{--
-        We are here checking if the key 'error' is in the session.
-        If it is it means that our validation fails.
+	<div class="flex flex-col items-center">
+		<form class="bg-white w-3/5 shadow-md rounded px-8 pt-6 pb-8 mb-4" action="/posts/{{ post.id }}?_method=PUT" method="POST">
 
-        ref: http://adonisjs.com/docs/4.0/sessions#_view_helpers
-        ref: http://edge.adonisjs.com/docs/conditionals#_if
-        --}}
-      @if(flashMessage('error'))
-        @component('components.alert', { type: 'danger', dismissible: true })
-          {{ flashMessage('error') }}
-        @endcomponent
-      @endif
+			@if(flashMessage('error'))
+				@component('components.alert', { type: 'danger', dismissible: true })
+					{{ flashMessage('error') }}
+				@endcomponent
+			@endif
 
-      @include('posts.partials.form')
+			{{ csrfField() }}
 
-    </div>
-  </div>
+			{{-- Title Field --}}
+			<div class="mb-8">
+				@!component('components.label', { text: 'Title', related: 'title' })
+				@!component('components.input', { name: 'title', value: old('title', post.title || ''), required: true })
+				<div>
+				{{ elIf('<small class="text-xs">$self</small>', getErrorFor('title'), hasErrorFor('title')) }}
+				</div>
+			</div>
+
+			<div  class="mb-8">
+				<label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Select Course</label>
+				
+				<select name="course_id" required="required" id="courseListCreatePost" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight">
+					<option>Select Course</option>
+					@each(course in navigationData.navigationCourses)
+						<option value="{{{course.id}}}" {{ (course.id == post.course_id)? 'selected': '' }}>{{{course.name}}}</option>
+					@endeach
+				</select>
+			</div>
+
+			{{ elIf('<small class="text-xs">$self</small>', getErrorFor('course_id'), hasErrorFor('course_id')) }}
+
+
+			<div class="mb-8 section_create_post">
+				<label  class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 ">Select Section</label>
+				<select name="section_id" required="required" id="createPostsectionId"  class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight selectpicker">
+					<option>Select Section</option>
+
+					@each(section in navigationData.navigationSections)
+						<option value="{{{section.id}}}" {{ (section.id == post.section_id)? 'selected': '' }}>{{{section.name}}}</option>
+					@endeach
+
+
+				</select>
+			</div>
+			{{ elIf('<small class="text-xs">$self</small>', getErrorFor('section_id'), hasErrorFor('section_id')) }}
+
+
+			<div class="mb-8 section_topic_post">
+				<label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Select Topic</label>
+				<select required="required" name="topic_id" id="createPostTopicId" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight">
+					<option>Select Topic</option>
+
+					@each(topic in navigationData.navigationTopics)
+						<option value="{{{topic.id}}}" {{ (topic.id == post.topic_id)? 'selected': '' }}>{{{topic.name}}}</option>
+					@endeach
+
+				</select>
+			</div>
+				
+
+			<div class="mb-8">
+				<div class="custom-choose-file-wrap">
+					{{ elIf('<small class="text-xs">$self</small>', getErrorFor('topic_id'), hasErrorFor('topic_id')) }}
+					<input type="file" onchange="previewFile()" name="post_image" />
+					<span class="w-full inline-block text-center bg-info text-white p-2 rounded">Choose Image</span>
+				</div>
+				<div class="mt-4">
+				<img id="preview" src="{{ assetsUrl('uploads/posts/'+ post.post_image ) }}" height="200" alt="Image preview...">
+				</div>
+			</div>
+
+
+			<div  class="mb-8">
+				<input type="hidden" name="user_id" value="{{{auth.user.id}}}" />
+				{{-- Body Field --}}
+			<textarea name="body" required="required" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight" rows="5">{{ post.body }}</textarea>
+			</div>
+
+			<button class="bg-info hover:bg-brand-dark text-white py-2 px-4 rounded">
+				Update
+			</button>
+		</form>
+	</div>
+	
+	{{--  for autoselect course in edit mode  --}}
+
+	<script>
+
+	</script>
 @endsection

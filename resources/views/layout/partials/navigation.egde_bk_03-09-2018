@@ -1,0 +1,126 @@
+<div class="list-detail pt-4">
+
+    <ul class="sidebar-menu">
+        <li class="treeview">
+            <a href="javascript:void(0);">Section name 1<i class="fa fa-angle-right float-right"></i></a>
+            <ul class="sidebar-submenu">
+            
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0);">Section name 2<i class="fa fa-angle-right float-right"></i></a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0);">Section name 3<i class="fa fa-angle-right float-right"></i></a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0);">Section name 4<i class="fa fa-angle-right float-right"></i></a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0);">Section name 5<i class="fa fa-angle-right float-right"></i></a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0);">Section name 6<i class="fa fa-angle-right float-right"></i></a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0);">Section name 7<i class="fa fa-angle-right float-right"></i></a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+                <li>
+                    <a href="#">Topic 1</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+

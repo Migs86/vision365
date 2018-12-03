@@ -1,0 +1,73 @@
+@layout('layout.adminApp')
+@section('content')
+@set('title', 'AddSection')
+<section class="data_section">
+            <div class="col">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form_section">
+                            <fieldset>
+                                <legend>Section Details</legend>
+                                <div class="row justify-content-md-center">
+                                    <div class="col-12 col-sm-12">
+                                        <form class="row" method="post" action="/admin/sectionStore">
+                                        {{ csrfField() }}
+                                            <div class="col-12 col-sm-6">
+                                            {{ elIf('<small class="text-xs">$self</small>', getErrorFor('name'), hasErrorFor('name')) }}
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label">Name</label>
+                                                    <div class="col-lg ">
+                                                        <div class="input-group">
+                                                            <input required="" type="text" class="form-control" id="formGroupExampleInput" value="" name="name" placeholder="Name">
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                            
+                                            <div class="col-12 col-sm-6">
+                                            {{ elIf('<small class="text-xs">$self</small>', getErrorFor('description'), hasErrorFor('description')) }}
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label">Description</label>
+                                                    <div class="col-lg ">
+                                                     <div class="input-group">
+                                                        <textarea required=""  class="form-control" name="description"></textarea>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <div class="col-12 col-sm-6">
+                                            {{ elIf('<small class="text-xs">$self</small>', getErrorFor('course_id'), hasErrorFor('course_id')) }}
+                                                <div class="form-group row">
+                                                  <label class="col-lg-4 col-form-label" for="sel1">Select Course:</label>
+                                                   <div class="col-lg ">
+                                                        <div class="input-group">
+                                                  <select class="form-control" required="" name="course_id">
+                                                  @each(course in courses)
+                                                    <option value="{{{course.id}}}">{{{course.name}}}</option>
+                                                    @endeach
+                                                  </select>
+                                                  </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                                <div class="col-12 col-sm-6 text-right">
+                                                <div class="display_table">
+                                                    <div class="display_table_cell align-bottom">
+                                                        <div class="form-group">
+                                                            <input type="submit" class="btn-green-round btn mr-2" name="submit" value="Create">
+                                                            
+                                                            <a href="" class="btn-cancel btn">Cancel</a>
+                                                        </div>						
+                                                    </div>
+                                                </div>
+                                            </div>					
+                                        </form>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+@endsection

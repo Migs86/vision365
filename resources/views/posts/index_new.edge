@@ -1,0 +1,27 @@
+@layout('layout.app')
+@section('content')
+
+	@set('title', 'Vision 365')
+	  
+  	<div class="posts-container">
+    	@each(post in posts.data, include = 'posts.partials.post-card-new')
+
+		@else
+			@component('components.alert', { color: 'info' })
+				<p class="text-sm">There's no post available!</p>
+			@endcomponent
+		@endeach
+	</div>
+
+
+
+
+
+
+
+    <!-- pagination has path -->
+	<p class="pagination">
+		<a class="pagination__next" href="/index_new/1/{{ (data.link) }}">Next Page</a>
+	</p>
+
+@endsection

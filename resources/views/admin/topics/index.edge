@@ -8,7 +8,18 @@
                 <span> {{ flashMessage('notification') }} </span>
             @endif
             
-            @!component('components.input', { name: 'SearchDataTable',placeholder:'Search..', required: true })
+            <section class="data_filter">
+                <div class="col">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="search" class="form-control" id="SearchDataTable" placeholder="Search">
+                        </div>
+                        <div class="form-group ml-2">
+                            <a href="/admin/topicsCreate" class="btn btn-green-round">Add New Topic</a>
+                        </div>
+                        </form>
+                </div>
+            </section>
             
                 <div class="table-responsive">
                     <table class="table table-bordered" id="data_table">
@@ -29,14 +40,21 @@
                                 <td>{{{ topic.name }}}</td>
 							    <td>{{{ topic.description.substring(0, 30) }}} ... </td>
 							    <td>
-                                    <div class="flex">
-                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-info-light mr-4" href="#">
+                                
+                                    <button type="button" id="{{{ topic.id }}}" data-table="topics" data-status="{{{topic.status}}}" class="btn btn-lg btn-toggle update_status
+                                    @if(topic.status==1) 
+                                        active
+                                    @endif 
+                                   " data-toggle="button" aria-pressed="false" autocomplete="off">
+                                        <div class="handle"></div>
+                                        </button>
+                                        <a class="adjst-icon-size flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-info-light ml-2 mr-2" href="/admin/viewTopic/{{{topic.id}}}">
                                           @!component('icon.edit', { size: '25px' })
                                         </a>
-                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="#">
+                                        <a class="adjst-icon-size flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="/admin/topicDestroy/{{{topic.id}}}">
                                           @!component('icon.trash', { size: '25px' })
                                         </a>
-                                    </div>
+                            
                                 </td>
 							</tr>
 							@else

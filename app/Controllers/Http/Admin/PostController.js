@@ -11,7 +11,6 @@ class PostController {
   async index ({ request, response, view }) {
      const posts  = await Database
             .table('posts')
-
     return view.render('admin.posts.index', { posts }  )
   }
 

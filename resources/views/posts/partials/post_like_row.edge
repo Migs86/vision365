@@ -1,0 +1,23 @@
+<span class="text-info"><i class="fa fa-thumbs-up"></i></span>
+
+<label>
+    @if(size(posts.likes)>0)
+        <span class="title-font-color like-data">
+            @each(like in posts.likes)
+                @if(($loop.index + 1) > 1)
+                    <span class="hidden show-hide-likes"> {{like.user.username}}</span>
+                @else
+                    {{like.user.username}}
+                @endif
+            @endeach 
+        </span> 
+        <a class="hide-likes-text" >
+                @if(size(posts.likes)>1) 
+                    and <span class="title-font-color">{{ size(posts.likes)-1 }} <span class="list-all-likes">Others</span></span>
+                @endif
+        </a> 
+        liked your <span class="title-font-color">post</span>
+    @else
+        <span class="title-font-color">{{ size(posts.likes) }} Likes</span>
+    @endif
+</label>         

@@ -4,7 +4,7 @@
   @set('title', 'Register')
 
   <div class="flex flex-col items-center">
-    <form class="bg-white w-3/5 shadow-md rounded px-8 pt-6 pb-8 mb-4" action="/register" method="POST">
+    <form class="bg-white w-3/5 shadow-md rounded px-8 pt-6 pb-8 mb-4" action="/register" method="POST" enctype="multipart/form-data">
       {{--
         We are here checking if the key 'error' is in the session.
         If it is it means that our validation fails and credentials are incorect.
@@ -27,7 +27,14 @@
         ref: http://adonisjs.com/docs/4.1/csrf
         --}}
       {{ csrfField() }}
-
+      {{-- Name Field --}}
+      <div class="mb-8">
+        @!component('components.label', { text: 'Name', related: 'name' })
+        @!component('components.input', { name: 'name', value: old('name'), required: true })
+        <div>
+          {{ elIf('<small class="text-xs text-danger">$self</small>', getErrorFor('name'), hasErrorFor('name')) }}
+        </div>
+      </div>
       {{-- Username Field --}}
       <div class="mb-8">
         @!component('components.label', { text: 'Username', related: 'username' })
@@ -45,6 +52,18 @@
           {{ elIf('<small class="text-xs text-danger">$self</small>', getErrorFor('email'), hasErrorFor('email')) }}
         </div>
       </div>
+      {{-- user Profile image --}}
+      <div class="mb-8">
+        <div class="custom-choose-file-wrap">
+          <input type="file" onchange="previewFile()" name="profile_image" required="" accept="image/*"/>
+          <span class="w-full inline-block text-center bg-info text-white p-2 rounded">Choose Profile Image</span>
+        </div>
+        <div class="upload-profile-image-dislay-wrap mt-4">
+          <img id="preview" style="display:none" src="" alt="Image preview...">
+          {{ elIf('<small class="text-xs text-danger">$self</small>', getErrorFor('profile_image'), hasErrorFor('profile_image')) }}
+        </div>
+      </div>
+      {{-- userPrifile image end --}}
 
       {{-- Password Field --}}
       <div class="mb-8">
@@ -64,7 +83,7 @@
         </div>
       </div>
 
-      <button class="bg-black hover:bg-brand-dark text-white py-2 px-4 rounded">
+      <button class="bg-info hover:bg-brand-dark text-white py-2 px-4 rounded">
         Register
       </button>
   </div>

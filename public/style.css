@@ -55,6 +55,10 @@ font{
 .display_inilin_block{
     display: inline-block;
 }
+.navbar-light .navbar-nav .nav-link{
+    color: #fff;
+    opacity: 1
+}
 .position-fixed{
     position: fixed;
     top: 0px;
@@ -497,7 +501,7 @@ Dashboard css
 }
 .menu_side .nav-link {
     display: block;
-    padding: .7rem 1rem .7rem 10px;
+    padding: .7rem 1rem .7rem 45px;
     position: relative;
     font-size: 14px;
     font-weight: 400;
@@ -524,9 +528,11 @@ Dashboard css
 .menu_side .nav-link:hover img.active-page{
     display: initial;
 }
-.menu_side .nav-link img{
-   /* position: absolute;*/
+.menu_side .nav-link img,
+.menu_side .nav-link i{
+    position: absolute;
     left: 15px;
+    font-size: 22px;
 }
 .btn-toggle {
     padding: 0;
@@ -1392,6 +1398,12 @@ input:hover + .btn-green,
     }
     .menu_side{
         max-width: 62px;
+        position: absolute;
+        left: 0px;
+        z-index: 99
+    }
+    .menu_side + .col-12{
+        padding-left: 77px;
     }
     .content_side{
         max-width: calc(100% - 62px)
@@ -1720,4 +1732,8 @@ table.dataTable thead th, table.dataTable thead td{
 
 .cstm-padding-top{
     padding-top:79px;
+}
+.adjst-icon-size .fill-current{
+    width:20px;
+    height:18px;
 }

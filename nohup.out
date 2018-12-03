@@ -1,0 +1,140 @@
+
+ SERVER STARTED 
+> Watching files for changes...
+
+2018-08-30T06:42:23.771Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+
+ SERVER STARTED 
+> Watching files for changes...
+
+2018-08-30T06:44:28.363Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+
+ SERVER STARTED 
+> Watching files for changes...
+
+2018-08-30T10:14:06.347Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+here not login
+here not login
+here not login
+here not login
+changed start/routes.js
+2018-09-01T05:07:22.286Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed start/routes.js
+2018-09-01T05:07:29.223Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed start/routes.js
+2018-09-01T05:07:42.321Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed start/routes.js
+2018-09-01T05:07:59.847Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed start/routes.js
+2018-09-01T05:08:41.109Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed start/routes.js
+changed start/routes.js
+changed start/routes.js
+changed start/routes.js
+2018-09-01T05:08:54.674Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:09:10.073Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed start/routes.js
+changed start/routes.js
+2018-09-01T05:09:23.260Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed start/routes.js
+2018-09-01T05:09:34.505Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:09:43.193Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:09:48.068Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:09:50.681Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:09:56.006Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+changed app/Controllers/Http/Admin/SectionController.js
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:09:58.897Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:10:39.915Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:10:42.573Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:13:29.261Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:13:39.109Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+here not login
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:16:35.938Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:16:41.552Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+here not login
+changed app/Controllers/Http/Admin/SectionController.js
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:17:29.360Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+here not login
+here not login
+changed app/Controllers/Http/Admin/SectionController.js
+2018-09-01T05:25:30.916Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+events.js:167
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE 112.196.33.91:3333
+    at Server.setupListenHandle [as _listen2] (net.js:1336:14)
+    at listenInCluster (net.js:1384:12)
+    at doListen (net.js:1510:7)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:745:11)
+    at startup (internal/bootstrap/node.js:266:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:596:3)
+Emitted 'error' event at:
+    at emitErrorNT (net.js:1363:8)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+    [... lines matching original stack trace ...]
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:596:3)
+Application crashed, make sure to kill all related running process, fix the issue and re-run the app
+events.js:167
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event at:
+    at lazyFs.read (internal/fs/streams.js:165:12)
+    at FSReqWrap.wrapper [as oncomplete] (fs.js:458:17)
+
+ SERVER STARTED 
+> Watching files for changes...
+
+2018-10-17T09:58:26.171Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+
+ SERVER STARTED 
+> Watching files for changes...
+
+2018-10-17T09:59:18.840Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+
+ SERVER STARTED 
+> Watching files for changes...
+
+2018-10-17T10:01:56.031Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+
+ SERVER STARTED 
+> Watching files for changes...
+
+2018-10-17T10:07:39.419Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+Knex:warning - Connection Error: Error: Connection lost: The server closed the connection.
+
+ SERVER STARTED 
+> Watching files for changes...
+
+2018-10-31T06:52:24.470Z - [32minfo[39m: [32mserving app on http://112.196.33.91:3333[39m

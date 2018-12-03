@@ -1,0 +1,63 @@
+@layout('layout.adminApp')
+@section('content')
+
+    @set('title', 'AdminLogin')
+    <div class="flex flex-col items-center">
+        <section class="data_section">
+            @if(flashMessage('notification'))
+                <span> {{ flashMessage('notification') }} </span>
+            @endif
+            
+            <section class="data_filter">
+                <div class="col">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="search" class="form-control" id="SearchDataTable" placeholder="Search">
+                        </div>
+                        
+                        </form>
+                </div>
+            </section>
+            
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="data_table">
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No.</th>
+                                <th scope="col">Post Title</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Comment</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @each(comment in comments)
+                            <tr>
+							    <td>{{ ($loop.index + 1) }}</td>
+							    <td>{{{ comment.post_title }}}</td>
+                                <td>{{{ comment.username }}}</td>
+							    <td>{{{ comment.content.substring(0, 30) }}} ... </td>
+							    <td>
+                                    <button type="button" id="{{{ comment.id }}}" data-table="comments" data-status="{{{comment.status}}}" class="btn btn-lg btn-toggle update_status
+                                    @if(comment.status==1) 
+                                        active
+                                    @endif 
+                                   " data-toggle="button" aria-pressed="false" autocomplete="off">
+                                        <div class="handle"></div>
+                                        </button>
+                    
+                                        <a class="adjst-icon-size flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="/admin/commentDestroy/{{{comment.id}}}">
+                                          @!component('icon.trash', { size: '25px' })
+                                        </a>
+                            
+                                </td>
+							</tr>
+							@else
+							 <h2> No post found </h2>
+							@endeach
+                        </tbody>
+                    </table>
+                </div>
+        </section>
+    </div>
+@endsection

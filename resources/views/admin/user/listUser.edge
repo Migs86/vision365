@@ -6,7 +6,18 @@
 @if(flashMessage('notification'))
   <span> {{ flashMessage('notification') }} </span>
 @endif
-      @!component('components.input', { name: 'SearchDataTable',placeholder:'Search..', required: true })
+     <section class="data_filter">
+                <div class="col">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="search" class="form-control" id="SearchDataTable" placeholder="Search">
+                        </div>
+                        <div class="form-group ml-2">
+                            <a href="/admin/userCreate" class="btn btn-green-round">Add New User</a>
+                        </div>
+                        </form>
+                </div>
+            </section>
                         <div class="table-responsive">
                                 <table class="table table-bordered" id="data_table">
                                   <thead>
@@ -20,26 +31,32 @@
                                   <tbody>
                                     @each(user in users)
                                     <tr>
-								    <td>{{ ($loop.index + 1) }}</td>
-								    <td>{{{ user.username }}}</td>
-								    <td>{{{ user.email }}}</td>
-								    <td><div class="flex">
-                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-info-light mr-4" href="admin/user/{{ user.id }}/edit">
+                  								    <td>{{ ($loop.index + 1) }}</td>
+                  								    <td>{{{ user.username }}}</td>
+                  								    <td>{{{ user.email }}}</td>
+                  								    <td>
+                                    <button type="button" id="{{{ user.id }}}" data-table="users" data-status="{{{user.status}}}" class="btn btn-lg btn-toggle update_status
+                                    @if(user.status==1) 
+                                        active
+                                    @endif 
+                                   " data-toggle="button" aria-pressed="false" autocomplete="off">
+                                        <div class="handle"></div>
+                                        </button>
+                                        <a class="adjst-icon-size flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-info-light ml-2 mr-4" href="/admin/userEdit/{{{ user.id }}}">
                                           @!component('icon.edit', { size: '25px' })
                                         </a>
-                                        <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="admin/userDelete/{{ user.id }}">
+                                        <a class="adjst-icon-size flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="/admin/userDelete/{{{ user.id }}}">
                                           @!component('icon.trash', { size: '25px' })
                                         </a>
-                                      </div></td>
-								    </tr>
-								  @else
-								    <h2> No users found </h2>
-								  @endeach
+                                 
+                                        </td>
+                    								    </tr>
+                    								  @else
+                    								    <h2> No users found </h2>
+            								  @endeach
 
-                                  </tbody>
-                                </table>
-                        </div>
-                    </section>
-
+                        </tbody>
+                      </table>
+              </div>
+           </section>
 @endsection
-	

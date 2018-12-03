@@ -2,30 +2,45 @@
 
 @section('content')
   @set('title', 'Blog Demo')
-  <div class="post-body-wrap">
-      <article class="float-left w-full create-post-wrap bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <!--div class="post-body-wrap">
+      <article class="float-left w-full create-post-wrap rounded px-3 pt-6 pb-8 mb-4">
         <span class="user-img-for-post">
                <img src="../images/profile.png">
         </span>
         <form>
-          <textarea placeholder="write here..."></textarea>
+          <textarea placeholder="Write Somthing..."></textarea>
           <div class="btn-group-wrap">
-            <button class="rounded-btn float-right bg-info hover:bg-white hover:text-info text-white rounded-full shadow">
+            <button class="rounded-btn float-right bg-grey-light hover:bg-info hover:text-white text-info rounded-full shadow">
               <i class="fa fa-paper-plane"></i>
+            </button>
+            <button class="rounded-btn float-right bg-grey-light hover:bg-info hover:text-white text-info rounded-full shadow">
+              <i class="fa fa-video-camera"></i>
+            </button>
+            <button class="rounded-btn float-right bg-grey-light hover:bg-info hover:text-white text-info rounded-full shadow">
+              <i class="fa fa-camera"></i>
             </button>
           </div>
         </form>
       </article>
-  </div>
+  </div-->
   {{--
     Looping over all posts.
 
     ref: http://edge.adonisjs.com/docs/iteration
     --}}
-  @each(post in posts, include = 'posts.partials.post-card')
+  
+
+
+  @each(post in posts.data, include = 'posts.partials.post-card')
+        
   @else
+
     @component('components.alert', { color: 'info' })
       <p class="text-sm">There's no post available!</p>
     @endcomponent
+
   @endeach
+
+
+  
 @endsection

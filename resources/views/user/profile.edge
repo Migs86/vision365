@@ -1,0 +1,114 @@
+@layout('layout.app')
+@section('content')
+	
+	@set('title', 'Profile')
+
+
+	@if(flashMessage('error'))
+				@component('components.alert', { color: 'danger' })
+				<p class="text-sm">{{ flashMessage('error') }}</p>
+				@endcomponent
+			@endif
+  
+
+		<section id="account-settings" class="px-6 py-4 mb-4">
+			<header class="container mx-auto mb-6">
+				<h1 class="font-normal mb-3">Account Settings</h1>
+			</header>
+			
+			<main class="flex flex-col md:flex-row container mx-auto bg-white rounded-lg shadow mb-6 overflow-hidden">
+				<aside class="w-full md:w-1/4 bg-10 py-3 border-r border-30">
+					<section class="mb-6">
+						<h3 class="text-xl text-90 font-normal px-6 py-3 pb-3">Profile</h3>
+						<ul class="list-reset">
+							
+							<li class="text-lg font-normal"><a  href="/settings/profile" class="cursor-pointer block no-underline px-6 py-3 text-70    font-bold text-info">Contact Information</a></li> 
+							
+							<li class="text-lg font-normal"><a href="/settings/password" class="cursor-pointer block no-underline px-6 py-3 text-70">Change Password</a></li>
+						</ul>
+                    </section> 
+                    
+                    <section class="mb-6">
+                            <h3 class="text-xl text-90 font-normal px-6 py-3 pb-3">Billing</h3> 
+                            <ul class="list-reset">
+                                <li class="text-lg font-normal"><a dusk="invoices-link" class="cursor-pointer block no-underline px-6 py-3 text-70">Invoices</a></li>
+                            </ul>
+                        </section>
+
+					
+					
+				</aside> 
+				
+                <section class="flex-no-shrink w-full md:w-3/4">
+                    
+					<form class="py-6 px-6 md:px-12 " action="/settings/profile" method="POST" enctype="multipart/form-data">
+						
+						<h3 class="text-2xl text-90 mb-2 font-normal border-b border-30 pb-6 mb-8">Profile</h3> 
+                
+                
+                        {{ csrfField() }}
+						
+
+						{{-- user Profile image --}}
+						<div class="mb-8">
+							@!component('components.label', { text: 'Profile Image', related: 'profile_image' })
+							<div class="custom-choose-file-wrap">
+								<input type="file" onchange="previewFile()" name="profile_image"  accept="image/*"/>
+								<span class="w-full inline-block text-center bg-info text-white p-2 rounded">Choose Profile Image</span>
+							</div>
+							<div class="upload-profile-image-dislay-wrap mt-4">
+
+								<input type="hidden" name="old_profile_image" value="{{ auth.user.profile_image}}">
+
+							<img id="preview" src="{{ assetsUrl('uploads/users_profile_images/'+ auth.user.profile_image) }}" alt="Image preview...">
+								{{ elIf('<small class="text-xs text-danger">$self</small>', getErrorFor('profile_image'), hasErrorFor('profile_image')) }}
+							</div>
+						</div>
+						{{-- userPrifile image end --}}
+
+						
+                        {{-- Name Field --}}
+                        <div class="mb-8">
+                            @!component('components.label', { text: 'Name', related: 'name' })
+                            @!component('components.input', { type: 'name',name: 'name', value:auth.user.name, autocomplete: false })
+                            <div>
+                            {{ elIf('<small class="text-xs text-danger">$self</small>', getErrorFor('name'), hasErrorFor('name')) }}
+                            </div>
+						</div>
+						
+
+						{{-- Username Field --}}
+						<div class="mb-8">
+								@!component('components.label', { text: 'Username', related: 'username' })
+								@!component('components.input', { name: 'username', value: auth.user.username, required: true })
+								<div>
+								  {{ elIf('<small class="text-xs text-danger">$self</small>', getErrorFor('username'), hasErrorFor('username')) }}
+								</div>
+							  </div>
+						
+							  {{-- Email Field --}}
+							  <div class="mb-8">
+								@!component('components.label', { text: 'Email', related: 'email' })
+								@!component('components.input', { name: 'email', type: 'email', value: auth.user.email, required: true })
+								<div>
+								  {{ elIf('<small class="text-xs text-danger">$self</small>', getErrorFor('email'), hasErrorFor('email')) }}
+								</div>
+							  </div>
+                        
+                        
+                        
+                
+                
+                        <button class="bg-info hover:bg-brand-dark text-white py-2 px-4 rounded">
+                            Submit
+                        </button>
+                        </form>
+					
+				</section>
+			</main>
+        </section>
+	
+
+
+@endsection
+noora

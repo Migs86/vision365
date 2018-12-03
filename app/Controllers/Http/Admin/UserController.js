@@ -35,9 +35,7 @@ class UserController {
          */
         try {
             // console.log( username, password, role_type );
-
-
-            await auth.attempt(username, password,role_type)
+            await auth.attempt(username,password,role_type)
         } catch (e) {
               /**
                * Add flash message to the session with the content of
@@ -92,8 +90,8 @@ class UserController {
             .table('users')
             .where('id', id)
             .delete()
-            await session.flash({ notification: 'user deleted successful!' })
-          return response.redirect('user/listing')
+            await session.flash({ notification: 'user deleted successfull!' })
+          return response.redirect('/admin/user/listing')
     }
 
   async addUser({params,request, response ,session}){

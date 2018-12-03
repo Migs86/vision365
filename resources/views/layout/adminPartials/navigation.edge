@@ -1,29 +1,29 @@
-<div class="col-12 col-sm-4 col-md-3 col-lg-2 col-xl-2 menu_side" id="mobile">
+<div class="col-12 col-sm-4 col-md-3 col-lg-2 col-xl-2 menu_side pl-0" id="mobile">
         <ul class="collapse show" id="menu">
             <li class="nav-item">
-            {{{ route('CourseController.login') }}}
-                <a class="nav-link " href="http://112.196.33.91:3333/admin/dashboard">
+                <a class="nav-link {{(url == '/admin/dashboard')? 'active' : ''}}" href="/admin/dashboard">
                     <img class="not-active-page" src="/images/icons/dashboard-gray.png">
-                    <img class="active-page" src="/images/icons/dashboard-white.png">
+                    <img class="active-pagE" src="/images/icons/dashboard-white.png">
                     Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="http://112.196.33.91:3333/admin/user/listing">
+                <a class="nav-link {{(url == '/admin/user/listing' || url == '/admin/userCreate' )? 'active' : ''}}" href="/admin/user/listing">
                     <img class="not-active-page" src="/images/icons/customers-gray.png">
                     <img class="active-page" src="/images/icons/customers-white.png">
                     Manage Users
                 </a>
             </li>
              <li class="nav-item">
-                <a class="nav-link " href="http://112.196.33.91:3333/admin/posts/">
-                    <img class="not-active-page" src="/images/icons/service-providers-gray.png">
-                    <img class="active-page" src="/images/icons/service-providers-white.png">
+                <a class="nav-link {{(url == '/admin/posts/' )? 'active' : ''}}" href="/admin/posts/">
+                    <!--<img class="not-active-page" src="/images/icons/service-providers-gray.png">
+                    <img class="active-page" src="/images/icons/service-providers-white.png">-->
+                    <i class="fa fa-clipboard" aria-hidden="true"></i>
                     Manage Postings
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="http://112.196.33.91:3333/admin/courses/">
+                <a class="nav-link {{(url == '/admin/courses/' || url == '/admin/courses/create' )? 'active' : ''}}" href="/admin/courses/">
                     <img class="not-active-page" src="/images/icons/object-leaders-gray.png">
                     <img class="active-page" src="/images/icons/object-leaders-white.png">
                     Manage Courses
@@ -31,31 +31,25 @@
             </li>
 
              <li class="nav-item">
-                <a class="nav-link " href="http://112.196.33.91:3333/admin/sections/">
+                <a class="nav-link {{(url == '/admin/sections/' || url == '/admin/addSectionCreate' )? 'active' : ''}}" href="/admin/sections/">
                     <img class="not-active-page" src="/images/icons/missions-gray.png">
                     <img class="active-page" src="/images/icons/missions-white.png">
                     Manage Sections
                 </a>
             </li>
              <li class="nav-item">
-                <a class="nav-link " href="http://112.196.33.91:3333/admin/topics/">
+                <a class="nav-link {{(url == '/admin/topics/' || url == '/admin/topicsCreate' )? 'active' : ''}}" href="/admin/topics/">
                     <img class="not-active-page" src="/images/icons/object-leaders-gray.png">
                     <img class="active-page" src="/images/icons/object-leaders-white.png">
                     Manage Topics
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="http://112.196.33.91:3333/admin/reports">
-                    <img class="not-active-page" src="/images/icons/reports-gray.png">
-                    <img class="active-page" src="/images/icons/reports-white.png">
-                    Manage Reports
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <img class="not-active-page" src="/images/icons/missions-gray.png">
-                    <img class="active-page" src="/images/icons/missions-white.png">
-                    Manage Web Settings
+                <a class="nav-link {{(url == '/admin/comments')? 'active' : ''}}" href="/admin/comments">
+                    <!--<img class="not-active-page" src="/images/icons/reports-gray.png">
+                    <img class="active-page" src="/images/icons/reports-white.png">-->
+                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+                    Manage Comments
                 </a>
             </li>
 

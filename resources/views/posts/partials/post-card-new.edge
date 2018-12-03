@@ -1,0 +1,179 @@
+<div class="post-body-wrap">
+    <article class="float-left w-full rounded px-3 pt-6 pb-8 mb-4">
+
+        <!-- post header -->
+        <header class="flex justify-between pb-4">
+            <h4 class="post-title">
+                <!-- login user -->
+                @if(post.user.profile_image)
+
+                <span class="user-img-for-post"><img src="{{ assetsUrl('uploads/users_profile_images/'+ post.user.profile_image ) }}"></span>
+                @else
+                <span class="user-img-for-post"> <img src="{{ assetsUrl('images/profile.png') }}"></span>
+                @endif                
+                <span class="title-font-color">{{ post.title }}</span>
+            </h4>
+
+            <div class="time-stamp text-xs">
+                {{ post.created_at }}
+            </div>
+
+            {{--
+              This tag let us know if the current user is logged in or not.
+
+              ref: http://adonisjs.com/docs/4.0/views#_loggedin
+              ref: http://adonisjs.com/docs/4.0/authentication#_loggedin
+              --}}
+            
+            @loggedIn
+            @if(auth.user.id == post.user_id)
+                <div class="flex">
+                    <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-info-light mr-4" href="/posts/{{ post.id }}/edit">
+                        @!component('icon.edit', { size: '25px' })
+                    </a>
+                    <a class="flex shadow items-center justify-center text-grey-dark rounded-full h-10 w-10 bg-danger-light" href="/posts/{{ post.id }}/delete">
+                      @!component('icon.trash', { size: '25px' })
+                    </a>
+                </div>
+                @endif
+            @endloggedIn
+        </header>
+
+        <!-- ./post header -->
+
+        <!-- post images -->
+
+        <img class="post-banner" src="{{ assetsUrl('uploads/posts/'+ post.post_image ) }}">
+        <!-- / post images -->
+
+        <!-- comments section -->
+        <div class="comment-on-post">
+
+            <!-- post description -->
+            <p>{{{ post.body }}}</p>
+            <!-- / post description -->
+
+            <div class="float-left w-full border border-r-0 border-l-0 my-3 post-like-detail-wrap">
+
+                <div class="float-left py-2 post-like-detail"  id="like-info-{{ post.id }}">
+                    
+                    <span class="text-info"><i class="fa fa-thumbs-up"></i></span>
+                    <label><span class="title-font-color like-data">
+                        @if(size(post.likes)>0) 
+                            @each(like in post.likes)
+                                @if(($loop.index + 1) > 1)
+                                   <span class="hidden show-hide-likes"> {{like.user.username}}</span>
+                                @else
+                                    {{like.user.username}}
+                                @endif
+                            @endeach 
+                            
+                            </span> 
+                            <a class="hide-likes-text" >
+                                 @if(size(post.likes)>1) 
+                                    and <span class="title-font-color">{{ size(post.likes)-1 }} <span class="list-all-likes">Others</span></span>
+                                @endif
+                            </a> 
+                            liked your <span class="title-font-color">post</span></label> 
+                        @else
+                            <span class="title-font-color">{{ size(post.likes) }} Likes</span>
+                        @endif
+
+
+
+                </div>
+
+                <div class="float-right text-right text-info total-comment py-2">
+                    <a href="javascript:void(0)">{{ size(post.comments) }} comments</a>
+                </div>
+
+            </div>
+            
+
+            <div class="float-left w-full my-3 comment-list">
+                <ul>
+                    @each(comment in post.comments)
+                    <!-- comment row -->
+                    <li>
+                        <span>
+                            @if(comment.user.profile_image)
+                                <img src="{{ assetsUrl('uploads/users_profile_images/'+ comment.user.profile_image ) }}">
+                            @else
+                                <img src="{{ assetsUrl('images/profile.png') }}">
+                            @endif
+                        </span>
+                        <div class="comment-wrap">
+                            <h4>{{ comment.user.username }}</h4>
+                            <p>{{ comment.content }}</p>
+                        </div>
+
+                        <div class="action-btn-wrap">
+                            <a href="javascript:void(0);" class="toggle-action-btn"><i class="fa fa-ellipsis-v"></i></a>
+                            
+                            <ol>
+                                <li><a href="#" class="text-warning"><i class="fa fa-flag"></i></a></li>
+                                <li><a href="#" class="text-danger"><i class="fa fa-trash"></i></a></li>
+                            </ol>
+                        </div>
+                    </li>
+
+                    @endeach
+                    <!-- / comment row -->
+                </ul>
+            </div>
+
+            <!--  comment form -->
+            <div class="float-left w-full my-3 post-comment-like-on-posy-wrap">
+
+                @loggedIn
+                <form class="submitCommenForm" method="post">
+                    <div class="float-left content-input-wrap py-2">
+                        <input type="text" required="" name="content" class="w-full rounded p-3 shadow" placeholder="write a comment">
+                    </div>
+                    
+                    <input type="hidden" id="post_id" value="{{post.id}}" name="post_id">
+                    <input type="hidden" id="user_id" value="{{auth.user.id}}" name="user_id">
+
+                    @set('thumbClass', '')
+                    @if(size(post.likes)>0)
+                        <span class="title-font-color">
+
+                            @each(like in post.likes)
+                                @if(auth.user.id == like.user.id )
+                                    @set('thumbClass', 'active')
+                                @endif
+                            @endeach
+
+                            <div class="float-right text-right content-post-btn-group py-2">
+                                <button  type="button" class="bg-white hover:bg-info hover:text-white text-info LikePostSubmit {{ thumbClass }}" data-Post-id="{{post.id}}" data-User-id="{{auth.user.id}}" data-User-name="{{auth.user.username}}"><i  class="fa fa-thumbs-up"></i></button>
+    
+                                <button class="bg-white hover:bg-info hover:text-white text-info"><i class="fa fa-paper-plane"></i></button>
+                            </div>
+                        </span>
+                    @else
+                        <div class="float-right text-right content-post-btn-group py-2">
+                        <button  type="button" class="bg-white hover:bg-info hover:text-white text-info LikePostSubmit {{ thumbClass }}" data-Post-id="{{post.id}}" data-User-id="{{auth.user.id}}" data-User-name="{{auth.user.username}}"><i  class="fa fa-thumbs-up"></i></button>
+
+                            <button class="bg-white hover:bg-info hover:text-white text-info"><i class="fa fa-paper-plane"></i></button>
+                        </div>
+                    @endif
+                </form>
+                
+                @else
+                    
+                    <a href="/login">
+                        <div class="float-left content-input-wrap py-2">
+                            <input type="text" required="" name="content" class="w-full rounded p-3 shadow" placeholder="Login first to comment on post. " disabled="" style="cursor:pointer">
+                        </div>
+                        <div class="float-right text-right content-post-btn-group py-2">
+
+                            <button type="button" disabled><i class="fa fa-thumbs-up"></i></button>
+                            <button disabled><i class="fa fa-paper-plane" ></i></button>
+                        </div>
+                    </a>
+                @endloggedIn
+            </div>
+            <!--  end comment form -->
+        </div>
+   </article>
+</div>

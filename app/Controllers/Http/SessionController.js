@@ -27,8 +27,11 @@ class SessionController {
      *
      * ref: http://adonisjs.com/docs/4.1/authentication#_attempt_uid_password
      */
+
     try {
+       
       await auth.attempt(username, password)
+       
     } catch (e) {
       /**
        * Add flash message to the session with the content of
